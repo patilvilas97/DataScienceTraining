@@ -12,7 +12,7 @@ while chances != 0 :
     for i in range(len(question)):
         if question[i]==char:
             print(word[i])
-            word[i] == char
+            word[i] == char         ##abc
             print(word[i])
 
     if question==word:
