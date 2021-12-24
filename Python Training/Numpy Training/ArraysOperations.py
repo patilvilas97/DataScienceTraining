@@ -10,3 +10,4 @@ print(arr1+arr2)                                                ## Adding the ar
 
 print(arr1*arr2)                                                ##Multiplying the arrays
 
+print(arr1/arr2)                                                ##Dividing two arrays
