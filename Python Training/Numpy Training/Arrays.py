@@ -13,3 +13,7 @@ for i in numbers:                               ##Prinitng all the values from a
 print()
 for i in range(len(numbers)):
     print("Index Value:", i,"Value:",numbers[i])
+
+arr=np.array("Vilas")
+for i in arr.flat:
+    print(i)
