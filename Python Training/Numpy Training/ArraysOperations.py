@@ -50,3 +50,7 @@ print(arr3.sum())                                       ##To sum up the array
 arr[0,2]=7
 arr[1,1]=8
 print(arr.sum(axis=1))                                  ##Will sum up the rows and colums
+
+
+arr5=np.ones((3,4))
+print(arr5)
