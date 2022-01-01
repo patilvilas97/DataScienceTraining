@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 print(pd.__version__)
 
@@ -21,3 +22,12 @@ print(df[2:5])                                                  ##will print the
 
 print(df.columns)                                               ##will return the columns
 print(df.Rainfall)                                              ##will print only the required column
+
+print(np.max(df))                                               ##using numpy with pandas
+
+print(df.Temp9am.min())                                         ##To print minimum without numpy
+
+print(df.Temp9am.max())                                         ##To print maximum without numpy
+
+print(df.describe())                                            ##To find the statistics of the column containing integers
+
