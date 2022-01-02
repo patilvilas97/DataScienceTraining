@@ -31,3 +31,8 @@ print(df.Temp9am.max())                                         ##To print maxim
 
 print(df.describe())                                            ##To find the statistics of the column containing integers
 
+my_list = [1,2,3,4,5,6,7,8,9,0]
+
+pandas_list = pd.Series(my_list)                                ##Intializing pandas series
+
+print(my_list)
