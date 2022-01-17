@@ -16,9 +16,9 @@ pd.set_option('display.max_rows', 10840)
 pd.set_option('display.width', 2000)
 
 
-threshold = len(data)*0.1                     ##To remove the column which is 90% empty
-data.dropna(thresh=threshold,axis=1, inplace=True)
-print(data.isnull().sum())
+threshold = len(data)*0.1                                   ##Defining the Threshold ex 10%
+data.dropna(thresh=threshold,axis=1, inplace=True)          ##Dropping the column having empty cells more than 90%
+print(data.isnull().sum())                                  ##Checking the sum of the Empty Cells
 
 def impute_median(series):
     return series.fillna(series.median())
