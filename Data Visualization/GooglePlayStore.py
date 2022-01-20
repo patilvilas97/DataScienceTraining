@@ -44,7 +44,44 @@ data['Installs'] = data['Installs'].apply(lambda x: str(x).replace(',', '')if ',
 data['Installs'] = data['Installs'].apply(lambda x:float(x))
 
 data.drop([6774], inplace=True)
-print(data[data['Installs'] < 0.6])
+# print(data[data['Installs'] < 0.6])
 # print(data.describe())
-data.boxplot(data[data['Rating']])
+data.boxplot()
+plt.show()
+
+
+##Data Visualization
+grp = data.groupby('Category')
+x=grp['Rating'].agg(np.mean)
+y=grp['Price'].agg(np.sum)
+z=grp['Reviews'].agg(np.mean)
+
+plt.figure(figsize=(16,9))
+plt.plot(x, 'rD', color='blue')
+plt.title('Category wise Rating')
+plt.xlabel('Category')
+plt.ylabel('Ratings')
+plt.xticks(rotation=90)
+
+plt.show()
+# print(y)
+# print(x)
+# print(z)
+
+plt.figure(figsize=(16,9))
+plt.plot(y, 'r--', color='blue')
+plt.title('Category wise TotalPrice')
+plt.xlabel('Category')
+plt.ylabel('PriceTotal')
+plt.xticks(rotation=90)
+
+plt.show()
+
+plt.figure(figsize=(16,9))
+plt.plot(z, 'rD', color='green')
+plt.title('Category wise Reviews')
+plt.xlabel('Category')
+plt.ylabel('Reviews')
+plt.xticks(rotation=90)
+
 plt.show()
