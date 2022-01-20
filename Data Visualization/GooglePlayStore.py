@@ -63,7 +63,7 @@ plt.xlabel('Category')
 plt.ylabel('Ratings')
 plt.xticks(rotation=90)
 
-plt.show()
+# plt.show()
 # print(y)
 # print(x)
 # print(z)
@@ -75,7 +75,7 @@ plt.xlabel('Category')
 plt.ylabel('PriceTotal')
 plt.xticks(rotation=90)
 
-plt.show()
+# plt.show()
 
 plt.figure(figsize=(16,9))                                          ##Ploting a grpah for category vs Reviews
 plt.plot(z, 'rD', color='green')
@@ -85,3 +85,4 @@ plt.ylabel('Reviews')
 plt.xticks(rotation=90)
 
 plt.show()
+##Step 3 Ends
