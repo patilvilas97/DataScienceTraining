@@ -10,7 +10,7 @@ pd.set_option('display.max_columns', 20)
 pd.set_option('display.width', 2000)
 pd.set_option('display.max_rows', 10840)
 pd.set_option('display.width', 2000)
-##}Step:1 Ends      This step only involves some print function and doesnt include any actions
+##}Step:1 Ends      This step only involves some print function and doesnt include any actionss
 
 ##Step : 2 Data Cleaning{
 ##After studying the data we can easily conclude some conclusion, based on that conclusions we can take actions to clean the dataset
