@@ -16,10 +16,10 @@ def cleanRate(series):
     # print(series)
     return float(series)
 
-data['rate'] = data['rate'].apply(cleanRate(series))
-# data.rate = data['rate'].transform(inpute_median)
+data['rate'] = data['rate'].apply(lambda x: str(x).replace('/5', '')if '/5' in str(x) else str(x))
+data.rate = data['rate'].apply(lambda x: float(x))
 print(data.isnull().sum())
-print(data.describe())
+print(data['rate'].dtype)
 # series = 4.1/5
 # series = series.replace("/5", "", inplace=True)
 # print(series)
