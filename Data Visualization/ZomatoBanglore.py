@@ -3,12 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data = pd.read_csv("zomato.csv")
+data.rename(columns= {'approx_cost(for two people)':'approx_cost','listed_in(type)' : 'type'}, inplace=True )
+
 
 pd.set_option('display.max_columns', 20)
 pd.set_option('display.width', 2000)
 pd.set_option('display.max_rows', 10840)
 pd.set_option('display.width', 2000)
-
+print(data.head())
 
 data.drop_duplicates(inplace=True)
 # print(data.shape)
@@ -35,11 +37,11 @@ def handleApproxCost(value):
         value = value[0] + value[1]
         return float(value)
     elif value == 'nan' :
-        value = data['approx_cost(for two people)'].median()
+        value = data['approx_cost'].median()
         return float(value)
     return float(value)
-data['approx_cost(for two people)'] = data['approx_cost(for two people)'].apply(handleApproxCost)
-# print(data.head())
+data['approx_cost'] = data['approx_cost'].apply(handleApproxCost)
+print(data.head())
 # data['approx_cost(for two people)']= data['approx_cost(for two people)'].fillna(data['approx_cost(for two people)'].mean())
 # print(data.isnull().sum())
 data.dropna(inplace=True)
@@ -55,7 +57,7 @@ def handleLocation(value):
     else :
         return value
 
-print(data['location'].unique())
+print(data['type'].unique())
 data['location'] = data['location'].apply(handleLocation)
 print(data['location'].unique())
 
@@ -81,5 +83,8 @@ plt.xlabel('Locations')
 plt.ylabel('Votes')
 plt.xticks(rotation=90)
 plt.show()
+
+
+grp = data.groupby('')
 
 
