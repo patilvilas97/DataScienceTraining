@@ -59,29 +59,35 @@ def handleRestType(value):
     else:
         return value
 data['rest_type'] = data['rest_type'].apply(handleRestType)
-print(data['cuisines'].value_counts())
+print(data['location'].value_counts())
 
 
-# cuisines = data['cuisines'].value_counts(ascending=False)
-# cuisines
-# def handleCuisines(value):
-#
-#
-#
-#
-#
+cuisines = data['cuisines'].value_counts(ascending=False)
+cuisinesLessThan100 = cuisines[cuisines<100]
+def handleCuisines(value):
+    if value in cuisinesLessThan100:
+        return 'Other Cuisines'
+    else:
+        return value
+
+data['cuisines'] = data['cuisines'].apply(handleCuisines)
+
+print(data['location'].value_counts())
 
 
-# def handleLocation(value):                                                          #Handling the column 'LOCATION' merging some locations
-#     if 'Koramangala' in value :                                                     #which are similar to each others
-#         value = 'Koramangala'
-#         return value
-#     else :
-#         return value
-#
+
+
+location = data['location'].value_counts(ascending=False)
+locationLessThan1000 = location[location<1000]
+
+def handleLocation(value):                                                          #Handling the column 'LOCATION' merging some locations
+    if value in locationLessThan1000 :                                                     #which are similar to each others
+        return 'Other Location'
+    else :
+        return value
 # print(data['type'].unique())                                                        #Printing the Unique values from the column 'TYPE'
-# data['location'] = data['location'].apply(handleLocation)
-# print(data['location'].unique())
+data['location'] = data['location'].apply(handleLocation)
+print(data['location'].value_counts())
 
 
 # grp = data.groupby('location')                                                      #Grouping the data as per location
