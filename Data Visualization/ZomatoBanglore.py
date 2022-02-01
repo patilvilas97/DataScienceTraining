@@ -87,7 +87,7 @@ def handleLocation(value):                                                      
         return value
 # print(data['type'].unique())                                                        #Printing the Unique values from the column 'TYPE'
 data['location'] = data['location'].apply(handleLocation)
-print(data['location'].value_counts())
+# print(data['location'].value_counts())
 
 
 # grp = data.groupby('location')                                                      #Grouping the data as per location
