@@ -6,24 +6,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
+##Reading the input file and setting the dsiplay options
 data = pd.read_csv("zomato.csv")                                                                                        #Importing the data
 data.rename(columns= {'approx_cost(for two people)':'approx_cost','listed_in(type)' : 'type'}, inplace=True )           ##Renaming the columns
-
-
 pd.set_option('display.max_columns', 20)                                                                                #Adding the display specifications
 pd.set_option('display.width', 2000)
 pd.set_option('display.max_rows', 10840)
 pd.set_option('display.width', 2000)
 # print(data.head())                                                                                                    #Printing the first five elements to get some idea about the data
 
+##Dropping the COlumns
 data.drop_duplicates(inplace=True)                                                                                      #Deleting Duplicate rows
 # print(data.shape)
-
 data.drop(columns=['url', 'address','phone','menu_item','reviews_list','listed_in(city)', 'dish_liked'], axis=1, inplace=True)  #Deleting unwanted Columns
 print(data.shape)
 # print(data.isnull().sum())                                                                                            #Printing the null values
 
+
+#Handling the Rate Column
 def handleRate(value):                                                                                                  #{Handling the column 'RATE', removing spaces
     if(value == 'NEW' or value == '-'):                                                                                 #and returning the float values to  the dataframe
         return np.nan                                                                                                   #Also filling the improper values with null values
@@ -35,6 +35,8 @@ def handleRate(value):                                                          
 data['rate'] = data['rate'].apply(handleRate)
 data['rate'] = data['rate'].fillna(data['rate'].mean())                                                                 #Filling the null values with mean of the column rate
 
+
+##Handling the Approximate Cost Column
 # print(data['approx_cost'].unique())                                                                                   #Printing unique values from the respective column
 def handleApproxCost(value):
     if ',' in str(value):                                                                                               #Handling the 'APPROX_COST' column and removing ','
@@ -53,6 +55,8 @@ data.dropna(inplace=True)                                                       
 print(data.head())                                                                                                      #Describing the statistic for the dataframe
 # print(data['rest_type'].value_counts())
 
+
+##Handling the rest Type column
 restType = data['rest_type'].value_counts(ascending=False)
 restTypeLessThan1000 = restType[restType < 1000]
 def handleRestType(value):
@@ -63,7 +67,7 @@ def handleRestType(value):
 data['rest_type'] = data['rest_type'].apply(handleRestType)
 print(data['location'].value_counts())
 
-
+##Handling the Cuisines Column
 cuisines = data['cuisines'].value_counts(ascending=False)
 cuisinesLessThan100 = cuisines[cuisines<100]
 def handleCuisines(value):
@@ -73,12 +77,10 @@ def handleCuisines(value):
         return value
 
 data['cuisines'] = data['cuisines'].apply(handleCuisines)
-
-print(data['location'].value_counts())
-
+print(data['cuisines'].value_counts())
 
 
-
+##Handling the Location Column
 location = data['location'].value_counts(ascending=False)
 locationLessThan1000 = location[location<1000]
 
@@ -91,7 +93,7 @@ def handleLocation(value):                                                      
 data['location'] = data['location'].apply(handleLocation)
 # print(data['location'].value_counts())
 
-sns.countplot
+##Data Cleaning has been done.
 
 # grp = data.groupby('location')                                                                                        #Grouping the data as per location
 # x = grp['rate'].agg(np.mean)
