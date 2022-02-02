@@ -19,7 +19,7 @@ pd.set_option('display.width', 2000)
 data.drop_duplicates(inplace=True)                                                                                      #Deleting Duplicate rows
 # print(data.shape)
 data.drop(columns=['url', 'address','phone','menu_item','reviews_list','listed_in(city)', 'dish_liked'], axis=1, inplace=True)  #Deleting unwanted Columns
-print(data.shape)
+# print(data.shape)
 # print(data.isnull().sum())                                                                                            #Printing the null values
 
 
@@ -48,7 +48,7 @@ def handleApproxCost(value):
         return float(value)
     return float(value)
 data['approx_cost'] = data['approx_cost'].apply(handleApproxCost)
-print(data.head())
+# print(data.head())
 # print(data.isnull().sum())
 data.dropna(inplace=True)                                                                                               #Dropping the rows containing null values
 # print(data.isnull().sum())
@@ -65,7 +65,7 @@ def handleRestType(value):
     else:
         return value
 data['rest_type'] = data['rest_type'].apply(handleRestType)
-print(data['location'].value_counts())
+# print(data['location'].value_counts())
 
 ##Handling the Cuisines Column
 cuisines = data['cuisines'].value_counts(ascending=False)
@@ -77,15 +77,15 @@ def handleCuisines(value):
         return value
 
 data['cuisines'] = data['cuisines'].apply(handleCuisines)
-print(data['cuisines'].value_counts())
+# print(data['cuisines'].value_counts())
 
 
 ##Handling the Location Column
 location = data['location'].value_counts(ascending=False)
-locationLessThan1000 = location[location<1000]
+locationLessThan300 = location[location<300]
 
 def handleLocation(value):                                                                                              #Handling the column 'LOCATION' merging some locations
-    if value in locationLessThan1000 :                                                                                  #which are similar to each others
+    if value in locationLessThan300 :                                                                                  #which are similar to each others
         return 'Other Location'
     else :
         return value
@@ -94,6 +94,25 @@ data['location'] = data['location'].apply(handleLocation)
 # print(data['location'].value_counts())
 
 ##Data Cleaning has been done.
+
+##Data Visualisation Started
+plt.figure(figsize=(15,10))
+# plt.figimage(data.shape,origin='upper',resize=True)
+sns.countplot(data['location'])
+plt.title("Count of Restaurants according to Location")
+plt.xticks(rotation=90)
+
+
+plt.figure(figsize=(15,10))
+sns.countplot(data['online_order'])
+
+plt.figure(figsize=(15,10))
+sns.countplot(data['book_table'])
+
+print(data.head())
+plt.figure(figsize=(15,10))
+sns.boxplot(data=data, x = 'online_order', y = 'rate')
+plt.show()
 
 # grp = data.groupby('location')                                                                                        #Grouping the data as per location
 # x = grp['rate'].agg(np.mean)
@@ -120,5 +139,3 @@ data['location'] = data['location'].apply(handleLocation)
 # x = grp['rate'].mean
 # plt.plot(x,'rD', color = 'blue')
 # plt.show()
-
-
