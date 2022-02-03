@@ -123,6 +123,7 @@ data1.to_csv("location_online.csv")
 data1 = pd.read_csv("location_online.csv")
 data1 = pd.pivot_table(data1, values=None, index=['location'],columns=['online_order'],fill_value=0, aggfunc=np.sum)
 print(data1)
+data1.plot(kind='bar')
 plt.show()
 
 
