@@ -112,7 +112,21 @@ sns.countplot(data['book_table'])
 print(data.head())
 plt.figure(figsize=(15,10))
 sns.boxplot(data=data, x = 'online_order', y = 'rate')
+
+plt.figure(figsize=(15,10))
+plt.title("Comparing restaurants on the basis of book table Facility")
+sns.boxplot(data=data, x='book_table', y='rate')
+# plt.show()
+
+data1 = data.groupby(['location', 'online_order'])['name'].count()
+data1.to_csv("location_online.csv")
+data1 = pd.read_csv("location_online.csv")
+data1 = pd.pivot_table(data1, values=None, index=['location'],columns=['online_order'],fill_value=0, aggfunc=np.sum)
+print(data1)
 plt.show()
+
+
+
 
 # grp = data.groupby('location')                                                                                        #Grouping the data as per location
 # x = grp['rate'].agg(np.mean)
