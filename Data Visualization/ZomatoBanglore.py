@@ -129,18 +129,18 @@ plt.show()
 
 
 
-# grp = data.groupby('location')                                                                                        #Grouping the data as per location
-# x = grp['rate'].agg(np.mean)
-# y = grp['votes'].agg(np.sum)
-#
-# plt.figure(figsize=(16,9))
-# plt.plot(x, 'rD')
-# plt.title('Ratings as per location')
-# plt.xlabel('Locations')
-# plt.ylabel('Rating')
-# plt.xticks(rotation=90)
-# # plt.show()
-#
+grp = data.groupby('location')                                                                                        #Grouping the data as per location
+x = grp['rate'].agg(np.mean)
+y = grp['votes'].agg(np.sum)
+
+plt.figure(figsize=(16,9))
+plt.plot(x, 'rD')
+plt.title('Ratings as per location')
+plt.xlabel('Locations')
+plt.ylabel('Rating')
+plt.xticks(rotation=90)
+# plt.show()
+
 # plt.figure(figsize=(16,9))
 # plt.plot(y, linewidth=2 , color = 'blue')
 # plt.title('Total Votes as per location')
