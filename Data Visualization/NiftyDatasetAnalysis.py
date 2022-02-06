@@ -21,3 +21,4 @@ def HandleOpen(value):
 
 data.Open = data['Open'].apply(HandleOpen)
 print(data.head())
+print(data.h)
