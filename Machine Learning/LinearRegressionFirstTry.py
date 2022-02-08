@@ -12,7 +12,7 @@ plt.scatter(data.area,data.price,color='red', marker='+')
 
 reg = lm.LinearRegression()
 reg.fit(data[['area']], data.price)
-plt.plot(data.area, reg.predict(data[['area']]), color=red)
+plt.plot(data.area, reg.predict(data[['area']]), color='red')
 print(reg.predict([[5000]]))
 print(reg.coef_)
 print(reg.intercept_)
