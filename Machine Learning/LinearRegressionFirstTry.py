@@ -25,3 +25,4 @@ print(data1)
 
 data1.to_csv('HousePricePrediction.csv', index = False)
 plt.show()
+plt.show()
