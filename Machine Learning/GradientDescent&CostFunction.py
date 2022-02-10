@@ -1,21 +1,21 @@
 import numpy as np
 from sklearn import linear_model
 
-def gradialDescent(x,y):
+def gradientDescent(x,y):
     m_curr = b_curr = 0
-    iterations = 10
-    learning_rate = 0.001
+    iterations = 3000
+    learning_rate = 0.084
     n = len(x)
 
     for i in range(iterations) :
         y_predicted = m_curr * x + b_curr
-        cost = (1/n) * sum([val*2for val in (y-y_predicted)])
-        md = (2/n) * sum(x * (y-y_predicted))
-        bd = (2/n) * sum(y-y_predicted)
+        cost = (1/n) * sum([val**2 for val in (y-y_predicted)])
+        md = -(2/n) * sum(x * (y-y_predicted))
+        bd = -(2/n) * sum(y-y_predicted)
         m_curr = m_curr - learning_rate * md
         b_curr =b_curr - learning_rate * bd
 
-        print("m {}, b {}, cost {}, iterations {}", format(m_curr,b_curr,cost,i))
+        print("m {}, b {}, cost {}, iterations {}".format(m_curr,b_curr,cost,i))
 
 
 
@@ -24,4 +24,4 @@ def gradialDescent(x,y):
 x = np.array([1,2,3,4,5])
 y = np.array([5,7,9,11,13])
 
-gradialDescent(x,y)
+gradientDescent(x,y)
