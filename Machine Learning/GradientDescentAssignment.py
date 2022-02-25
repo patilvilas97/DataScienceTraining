@@ -19,6 +19,8 @@ def gradientDescent(x,y):
         b_curr = b_curr - learning_rate * bd
         print("m : {}, b : {}, iterations {}".format(m_curr, b_curr, i))
 
+x=data.math.values
+y=data.cs.values
+print(type(x))
 
-
-gradientDescent(data.math,data.cs)
+gradientDescent(x,y)
