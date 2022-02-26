@@ -27,10 +27,11 @@ print(data1)
 data1.to_csv('HousePricePrediction.csv', index = False)
 
 with open('model_pickle', 'wb') as f :
-    pickle.dump(model,f)
+    pickle.dump(reg,f)
 
 with open('model_pickle', 'rb') as f:
     mp = pickle.load(f)
 print(mp.predict(5000))
+plt.show()
 plt.show()
 plt.show()
