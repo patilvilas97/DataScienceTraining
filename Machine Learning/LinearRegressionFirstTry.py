@@ -18,6 +18,13 @@ print(reg.predict([[5000]]))
 print(reg.coef_)
 print(reg.intercept_)
 
+with open('model_pickle', 'wb') as f :
+    pickle.dump(reg, f)
+
+with open('model_pickle', 'rb') as f:
+    mp = pickle.load(f)
+print(mp.predict(5000))
+
 data1 = pd.read_csv('areas.csv')
 print(data1)
 p = reg.predict(data1)
