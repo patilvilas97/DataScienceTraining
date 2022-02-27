@@ -16,7 +16,8 @@ print(model.predict([[5000]]))
 with open('homepricesModel', 'wb') as f:
     pickle.dump(model, f)
 with open('homepricesModel', 'rb') as f:
-    asd = pickle.load(f)
-    # asd.predict(5000)
-    print(asd.predict([[5000]]))
+    mp = pickle.load(f)
+    print(mp.predict([[5000]]))
+
+print(mp.predict([[3000]]))
 
