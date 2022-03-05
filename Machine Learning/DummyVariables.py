@@ -15,6 +15,22 @@ print(mergedData)
 model = linear_model.LinearRegression()
 model.fit(mergedData[['area', 'monroe township', 'robinsville']],data['price'])
 print(model.predict([[3600,0,1]]))
-print(model.predict([[5000,0,0]]))
+print(model.predict([[3600,0,0]]))
 print(model.score(mergedData[['area', 'monroe township', 'robinsville']],data['price']))
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+
+data1 = data
+data1.town = le.fit_transform(data1['town'])
+print(data1)
+
+x = data1[['town', 'area']].values
+y = data.price.values
+
+from sklearn.preprocessing import OneHotEncoder
+ohe = OneHotEncoder()
+print(x)
+z = ohe.fit_transform(x['town']).toarray()
+print(z)
 
