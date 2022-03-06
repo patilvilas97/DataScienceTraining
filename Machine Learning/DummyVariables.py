@@ -29,8 +29,8 @@ x = data1[['town', 'area']].values
 y = data.price.values
 
 from sklearn.preprocessing import OneHotEncoder
-ohe = OneHotEncoder()
-print(x)
-z = ohe.fit_transform(x['town']).toarray()
+ohe = OneHotEncoder(categorical_features=[0])
+print(x[:,0])
+z = ohe.fit_transform(x).toarray()
 print(z)
 
