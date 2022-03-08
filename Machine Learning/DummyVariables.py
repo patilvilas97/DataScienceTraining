@@ -30,8 +30,8 @@ y = data.price.values
 
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder(categorical_features=[0])
-print(x[:,0])
-print()
+# print(x[:,0])
+# print()
 z = ohe.fit_transform(x).toarray()
 print(z)
 
