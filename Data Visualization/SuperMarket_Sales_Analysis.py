@@ -10,3 +10,5 @@ print(data.tail(5))
 data.drop_duplicates(inplace = True)
 
 print(data.shape)
+
+print(data.shape)
