@@ -17,6 +17,7 @@ plt.plot(data.area, reg.predict(data[['area']]), color='red')
 print(reg.predict([[5000]]))
 print(reg.coef_)
 print(reg.intercept_)
+plt.show()
 
 with open('model_pickle', 'wb') as f :
     pickle.dump(reg, f)
